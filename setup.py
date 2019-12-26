@@ -9,6 +9,7 @@ setup(
     author="Kaiqi Dong",
     author_email="kaiqidong1991@gmail.com",
     licnese="MIT",
+    keywords=__keywords__,
     packages=find_packages(exclude=("tests",)),
     install_requires=["jinja2", "ipython"],
     tests_require=["pytest"],
