@@ -15,22 +15,24 @@ class Barh(BaseChart):
         "inner_stroke_width": "innerStrokeWidth",
         "padding": "padding",
         "stroke": "stroke",
-        "simplification": "simplification"
+        "simplification": "simplification",
     }
 
-    def __init__(self,
-                 data,
-                 xlabel=None,
-                 ylabel=None,
-                 axis_fontsize=1.5,
-                 label_fontsize=2,
-                 axis_roughness=0.5,
-                 highlight="green",
-                 inner_stroke_width=0,
-                 padding=0.1,
-                 stroke="black",
-                 simplification=0.2,
-                 **kwargs):
+    def __init__(
+        self,
+        data,
+        xlabel=None,
+        ylabel=None,
+        axis_fontsize=1.5,
+        label_fontsize=2,
+        axis_roughness=0.5,
+        highlight="coral",
+        inner_stroke_width=0,
+        padding=0.1,
+        stroke="black",
+        simplification=0.2,
+        **kwargs
+    ):
         super().__init__(data)
 
         self.opts["xLabel"] = self._xstr(xlabel)

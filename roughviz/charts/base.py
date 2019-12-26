@@ -19,6 +19,7 @@ class BaseChart(RenderEngine):
         "fill_weight": "fillWeight",
         "stroke_width": "strokeWidth",
         "roughtness": "roughness",
+        "tooltip_fontsize": "tooltipFontSize",
     }
 
     def __init__(
@@ -33,6 +34,7 @@ class BaseChart(RenderEngine):
         fill_weight=0,
         stroke_width=1,
         roughness=1,
+        tooltip_fontsize=0.95,
         **kwargs,
     ):
         super().__init__()
@@ -54,10 +56,11 @@ class BaseChart(RenderEngine):
         self.opts["height"] = height
         self.opts["interactive"] = interactive
         self.opts["bowing"] = bowing
-        self.opts["fill_style"] = fill_style
-        self.opts["fill_weight"] = fill_weight
-        self.opts["stroke_width"] = stroke_width
+        self.opts["fillStyle"] = fill_style
+        self.opts["fillWeight"] = fill_weight
+        self.opts["strokeWidth"] = stroke_width
         self.opts["roughness"] = roughness
+        self.opts["tooltipFontSize"] = tooltip_fontsize
 
     def render_to_tmpl(self):
         self.element_id = uuid.uuid4().hex
