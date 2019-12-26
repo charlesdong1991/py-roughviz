@@ -1,0 +1,26 @@
+<html>
+<body>
+
+<div id={{chart.element_id}}></div>
+
+<script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+<script>
+require.config({paths: {roughViz: "https://unpkg.com/rough-viz@1.0.5/dist/roughviz.min"}});
+require(["roughViz"], function(roughViz) {
+
+new roughViz.{{ chart.CHART_TYPE }}(
+  {{ chart.json_content }}
+);
+	var text = document.querySelectorAll(".xAxis{{chart.element_id}} .tick text");
+	var i;
+	for (i = 0; i < text.length; i++) {
+		text[i].setAttribute("transform", "rotate(0)");
+		text[i].style.textAnchor="middle";
+	}
+	document.getElementById("{{id_name}}").style.height = "380px";
+	document.querySelector("#{{id_name}} svg").style.height = "380px";
+});
+</script>
+
+</body>
+</html>
