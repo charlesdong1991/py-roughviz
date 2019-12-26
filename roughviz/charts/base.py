@@ -18,22 +18,22 @@ class BaseChart(RenderEngine):
         "fill_style": "fillStyle",
         "fill_weight": "fillWeight",
         "stroke_width": "strokeWidth",
-        "roughtness": "roughness"
+        "roughtness": "roughness",
     }
 
     def __init__(
-            self,
-            data,
-            title: Optional[str] = None,
-            width=800,
-            height=600,
-            interactive=True,
-            bowing=0.2,
-            fill_style="cross-hatch",
-            fill_weight=0,
-            stroke_width=1,
-            roughness=1,
-            **kwargs,
+        self,
+        data,
+        title: Optional[str] = None,
+        width=800,
+        height=600,
+        interactive=True,
+        bowing=0.2,
+        fill_style="cross-hatch",
+        fill_weight=0,
+        stroke_width=1,
+        roughness=1,
+        **kwargs,
     ):
         super().__init__()
         self.opts: dict = {}
@@ -43,15 +43,13 @@ class BaseChart(RenderEngine):
             raise TypeError("Only valid type of data is str and dictionary.")
         elif isinstance(data, str) and not data.endswith(DATA_TYPE):
             raise ValueError("Wrong type of data")
-        elif isinstance(data, dict) and set(data.keys()) != DATA_KEYS:
-            raise ValueError("If input data is dictionary, you must provide both values and labels as keys")
 
         self._check_data(data)
+
         if isinstance(data, dict):
             self.opts["data"] = data
 
         self.opts["title"] = self._xstr(title)
-
         self.opts["width"] = width
         self.opts["height"] = height
         self.opts["interactive"] = interactive
@@ -71,7 +69,9 @@ class BaseChart(RenderEngine):
     @staticmethod
     def _check_data(data):
         if isinstance(data, dict) and set(data.keys()) != DATA_KEYS:
-            raise ValueError("If input data is dictionary, you must provide both values and labels as keys")
+            raise ValueError(
+                "If input data is dictionary, you must provide both values and labels as keys"
+            )
 
     def _addition_conversion(self):
         self._convert_fontsize_unit()
