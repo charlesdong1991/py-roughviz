@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 
 __keywords__ = ["py-roughviz", "visualization", "sketchy charts", "hand-drawn charts"]
 
@@ -10,7 +10,7 @@ setup(
     author_email="kaiqidong1991@gmail.com",
     licnese="MIT",
     keywords=__keywords__,
-    packages=find_packages(exclude=("tests",)),
+    packages=find_namespace_packages(include=["py-roughviz.*"]),
     install_requires=["jinja2", "ipython"],
     tests_require=["pytest"],
     classifiers=[
@@ -19,5 +19,5 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Topic :: Software Development :: Libraries",
-    ]
+    ],
 )

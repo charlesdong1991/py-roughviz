@@ -6,6 +6,7 @@ class Bar(BaseChart):
     BAR_KWARGS = {
         "xlabel": "xLabel",
         "ylabel": "yLabel",
+        "color": "color",
         "axisFontSize": "axis_fontsize",
         "labelFontSize": "label_fontsize",
         "axisRoughness": "axis_roughness",
@@ -14,22 +15,25 @@ class Bar(BaseChart):
         "inner_stroke_width": "innerStrokeWidth",
         "padding": "padding",
         "stroke": "stroke",
-        "simplification": "simplification"
+        "simplification": "simplification",
     }
 
-    def __init__(self,
-                 data,
-                 xlabel=None,
-                 ylabel=None,
-                 axis_fontsize=1.5,
-                 label_fontsize=2,
-                 axis_roughness=0.5,
-                 highlight="green",
-                 inner_stroke_width=0,
-                 padding=0.1,
-                 stroke="black",
-                 simplification=0.2,
-                 **kwargs):
+    def __init__(
+        self,
+        data,
+        xlabel=None,
+        ylabel=None,
+        axis_fontsize=1.5,
+        label_fontsize=2,
+        axis_roughness=0.5,
+        color="skyblue",
+        highlight="green",
+        inner_stroke_width=0,
+        padding=0.1,
+        stroke="black",
+        simplification=0.2,
+        **kwargs
+    ):
         super().__init__(data)
 
         self.opts["xLabel"] = self._xstr(xlabel)
@@ -38,6 +42,7 @@ class Bar(BaseChart):
         self.opts["axisFontSize"] = axis_fontsize
         self.opts["labelFontSize"] = label_fontsize
 
+        self.opts["color"] = color
         self.opts["axisRoughness"] = axis_roughness
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width
