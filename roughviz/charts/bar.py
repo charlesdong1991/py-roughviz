@@ -21,6 +21,8 @@ class Bar(BaseChart):
     def __init__(
         self,
         data,
+        values=None,
+        labels=None,
         xlabel=None,
         ylabel=None,
         axis_fontsize=1.5,
@@ -34,7 +36,7 @@ class Bar(BaseChart):
         simplification=0.2,
         **kwargs
     ):
-        super().__init__(data)
+        super().__init__(data, values, labels)
 
         self.opts["xLabel"] = self._xstr(xlabel)
         self.opts["yLabel"] = self._xstr(ylabel)
