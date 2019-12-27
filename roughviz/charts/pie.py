@@ -42,11 +42,8 @@ class Pie(BaseChart):
     ):
         super().__init__(data, values, labels)
 
-        if colors is None:
-            self.opts["colors"] = DEFAULT_COLORS
-
-        if margin is None:
-            self.opts["margin"] = DEFAULT_MARGIN
+        self.opts["colors"] = colors or DEFAULT_COLORS
+        self.opts["margin"] = margin or DEFAULT_MARGIN
 
         self.opts["font"] = font
 

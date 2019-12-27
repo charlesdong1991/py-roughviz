@@ -63,11 +63,8 @@ class Line(BaseChart):
     ):
         super().__init__(data)
 
-        if colors is None:
-            self.opts["colors"] = DEFAULT_COLORS
-
-        if margin is None:
-            self.opts["margin"] = DEFAULT_MARGIN
+        self.opts["colors"] = colors or DEFAULT_COLORS
+        self.opts["margin"] = margin or DEFAULT_MARGIN
 
         # Line plot is slightly different than other plots, therefore, preprocessing
         # is needed beforehand

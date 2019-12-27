@@ -58,11 +58,8 @@ class Scatter(BaseChart):
         super().__init__(data, x, y)
         self._assign_input_values(x, y)
 
-        if colors is None:
-            self.opts["colors"] = DEFAULT_COLORS
-
-        if margin is None:
-            self.opts["margin"] = DEFAULT_MARGIN
+        self.opts["colors"] = colors or DEFAULT_COLORS
+        self.opts["margin"] = margin or DEFAULT_MARGIN
 
         self.opts["xLabel"] = self._xstr(xlabel)
         self.opts["yLabel"] = self._xstr(ylabel)
