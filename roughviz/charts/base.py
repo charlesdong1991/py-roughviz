@@ -144,7 +144,7 @@ class BaseChart(RenderEngine):
             self.opts["labelFontSize"] = fontsize
         return self
 
-    def set_ylabel(self, ylabel: str, fontsize: Optional[int, float] = None:
+    def set_ylabel(self, ylabel: str, fontsize: Optional[int, float] = None):
         """Set the ylabel for plots.
 
         Args:
