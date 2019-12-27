@@ -58,12 +58,12 @@ define the options later. And in order to make it easier to use, there are sever
 `set_title(title="The plot", fontsize=2)`, or `set_xlabel("X Label", fontsize=3)`
 
 Currently available options are:
-- set_options: this can be used to set all available options for charts
-- set_title: this can be used to set title and title fontsize
-- set_xlabel: this can be used to set xlabel and its fontsize
-- set_ylabel: this can be used to set ylabel and its fontsize
-- set_figsize: this can be used to set the figsize for plots
-- set_legend: this can be used to determine if legend is presented, and if so, which position to put legend
+- `set_options`: this can be used to set all available options for charts
+- `set_title`: this can be used to set title and title fontsize
+- `set_xlabel`: this can be used to set xlabel and its fontsize
+- `set_ylabel`: this can be used to set ylabel and its fontsize
+- `set_figsize`: this can be used to set the figsize for plots
+- `set_legend`: this can be used to determine if legend is presented, and if so, which position to put legend
 
 
 ## Examples
