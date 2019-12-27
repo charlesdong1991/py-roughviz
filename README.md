@@ -14,15 +14,22 @@ You could check out original JS libarary here: [RoughViz](https://github.com/jwi
 
 ## Before Use it
 
-Please install the dependencies in order to use them, you could clone the repo, and simply do if you are using
+- Cloning:
+If you clone the repo, please install the dependencies in order to use them, and simply do below if you are using
 `pip`.
 
 ```bash
 pip install -r requirements.txt
 ```
 
+- Downloading the pakcage:
+This package is also available on PyPi, so you could do below to download the package
+```bash
+pip install py-roughviz
+```
 
-## How to use it.
+
+## How to use it
 
 Due to design of original RoughViz, there are some restrictions on the format of input data. The
 detailed description can be found in the documentation.
