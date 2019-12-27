@@ -48,7 +48,6 @@ class Scatter(BaseChart):
         font="Gaegu",
         highlight="green",
         inner_stroke_width=0,
-        title_fontsize=0.95,
         stroke="black",
         simplification=0.2,
         radius=8,
@@ -71,7 +70,6 @@ class Scatter(BaseChart):
         self.opts["colorZero"] = color_zero
         self.opts["font"] = font
         self.opts["radius"] = radius
-        self.opts["titleFontSize"] = title_fontsize
         self.opts["axisRoughness"] = axis_roughness
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width
