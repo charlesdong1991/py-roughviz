@@ -20,12 +20,18 @@ class BaseChart(RenderEngine):
         "stroke_width": "strokeWidth",
         "roughtness": "roughness",
         "tooltip_fontsize": "tooltipFontSize",
+        "title_fontsize": "titleFontSize",
+        "width": "width",
+        "height": "height",
     }
 
     def __init__(
         self,
         data,
+        values=None,
+        labels=None,
         title: Optional[str] = None,
+        title_fontsize=0.95,
         width=800,
         height=600,
         interactive=True,
@@ -40,16 +46,16 @@ class BaseChart(RenderEngine):
         super().__init__()
         self.opts: dict = {}
 
-        self.data = data
         if not isinstance(data, (str, dict)):
             raise TypeError("Only valid type of data is str and dictionary.")
         elif isinstance(data, str) and not data.endswith(DATA_TYPE):
             raise ValueError("Wrong type of data")
+        self.data = data
 
-        self._check_data(data)
+        self._check_data_keys(data)
 
-        if isinstance(data, dict):
-            self.opts["data"] = data
+        self._assign_input_values(labels, values)
+        self.opts["data"] = data
 
         self.opts["title"] = self._xstr(title)
         self.opts["width"] = width
@@ -61,6 +67,7 @@ class BaseChart(RenderEngine):
         self.opts["strokeWidth"] = stroke_width
         self.opts["roughness"] = roughness
         self.opts["tooltipFontSize"] = tooltip_fontsize
+        self.opts["titleFontSize"] = title_fontsize
 
     def render_to_tmpl(self):
         self.element_id = uuid.uuid4().hex
@@ -70,11 +77,19 @@ class BaseChart(RenderEngine):
         self.json_content = json.dumps(self.opts)
 
     @staticmethod
-    def _check_data(data):
+    def _check_data_keys(data):
         if isinstance(data, dict) and set(data.keys()) != DATA_KEYS:
             raise ValueError(
                 "If input data is dictionary, you must provide both values and labels as keys"
             )
+
+    def _assign_input_values(self, labels, values):
+        if not labels or not values:
+            raise ValueError(
+                "You need to specify labels and values as separate" "attributes."
+            )
+        self.opts["labels"] = labels
+        self.opts["values"] = values
 
     def _addition_conversion(self):
         self._convert_fontsize_unit()

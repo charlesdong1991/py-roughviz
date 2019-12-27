@@ -8,7 +8,6 @@ class Pie(BaseChart):
 
     PIE_KWARGS = {
         "font": "font",
-        "titleFontSize": "title_fontsize",
         "highlight": "highlight",
         "inner_stroke_width": "innerStrokeWidth",
         "margin": "margin",
@@ -19,11 +18,9 @@ class Pie(BaseChart):
         self,
         data,
         font=0,
-        title_fontsize=3,
         highlight="green",
         inner_stroke_width=0,
         margin=None,
-        tooltip_fontsize=3,
         simplification=0.2,
         **kwargs
     ):
@@ -33,7 +30,6 @@ class Pie(BaseChart):
             self.opts["margin"] = DEFAULT_MARGIN
 
         self.opts["font"] = font
-        self.opts["titleFontSize"] = title_fontsize
 
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width

@@ -13,6 +13,7 @@ DEFAULT_COLORS = [
     "orange",
 ]
 DEFAULT_MARGIN = {"top": 50, "right": 20, "bottom": 70, "left": 100}
+SCATTER_DATA_KEYS = {"x", "y"}
 
 
 class Scatter(BaseChart):
@@ -20,13 +21,13 @@ class Scatter(BaseChart):
     SCATTER_KWARGS = {
         "xlabel": "xLabel",
         "ylabel": "yLabel",
-        "axisFontSize": "axis_fontsize",
-        "labelFontSize": "label_fontsize",
-        "axisRoughness": "axis_roughness",
-        "axisStrokeWidth": "axis_stroke_width",
-        "highlight": "highlight",
+        "axis_fontsize": "axisFontSize",
+        "label_fontsize": "labelFontSize",
+        "axis_roughness": "axisRoughness",
+        "axis_stroke_width": "axisStrokeWidth",
         "inner_stroke_width": "innerStrokeWidth",
         "padding": "padding",
+        "highlight": "highlight",
         "stroke": "stroke",
         "simplification": "simplification",
     }
@@ -34,6 +35,8 @@ class Scatter(BaseChart):
     def __init__(
         self,
         data,
+        x=None,
+        y=None,
         xlabel=None,
         ylabel=None,
         axis_fontsize=1.5,
@@ -51,7 +54,9 @@ class Scatter(BaseChart):
         radius=8,
         **kwargs
     ):
-        super().__init__(data)
+        super().__init__(data, x, y)
+        self._assign_input_values(x, y)
+
         if colors is None:
             colors = DEFAULT_COLORS
 
@@ -77,9 +82,15 @@ class Scatter(BaseChart):
         self._set_kwargs(**kwargs)
 
     @staticmethod
-    def _check_data(data):
-        if isinstance(data, dict) and set(data.keys()) != {"x", "y"}:
+    def _check_data_keys(data):
+        if isinstance(data, dict) and set(data.keys()) != SCATTER_DATA_KEYS:
             raise ValueError("Has to be x and y")
+
+    def _assign_input_values(self, x, y):
+        if not x or not y:
+            raise ValueError("You need to specify x and y as separate" "attributes.")
+        self.opts["x"] = x
+        self.opts["y"] = y
 
     def set_options(self, **kwargs):
 
