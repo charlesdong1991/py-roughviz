@@ -15,13 +15,15 @@ class Donut(BaseChart):
     def __init__(
         self,
         data,
+        values=None,
+        labels=None,
         font=0,
         highlight="green",
         inner_stroke_width=0,
         simplification=0.2,
         **kwargs
     ):
-        super().__init__(data)
+        super().__init__(data, values, labels)
 
         self.opts["font"] = font
         self.opts["highlight"] = highlight
