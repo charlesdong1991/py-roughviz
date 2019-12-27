@@ -46,13 +46,8 @@ class BaseChart(RenderEngine):
         super().__init__()
         self.opts: dict = {}
 
-        if not isinstance(data, (str, dict)):
-            raise TypeError("Only valid type of data is str and dictionary.")
-        elif isinstance(data, str) and not data.endswith(DATA_TYPE):
-            raise ValueError("Wrong type of data")
         self.data = data
-
-        self._check_data_keys(data)
+        self._check_input_data(data)
 
         self._assign_input_values(labels, values)
         self.opts["data"] = data
@@ -77,14 +72,18 @@ class BaseChart(RenderEngine):
         self.json_content = json.dumps(self.opts)
 
     @staticmethod
-    def _check_data_keys(data):
-        if isinstance(data, dict) and set(data.keys()) != DATA_KEYS:
+    def _check_input_data(data):
+        if not isinstance(data, (str, dict)):
+            raise TypeError("Only valid type of data is str and dictionary.")
+        elif isinstance(data, str) and not data.endswith(DATA_TYPE):
+            raise ValueError("Wrong type of data")
+        elif isinstance(data, dict) and set(data.keys()) != DATA_KEYS:
             raise ValueError(
                 "If input data is dictionary, you must provide both values and labels as keys"
             )
 
     def _assign_input_values(self, labels, values):
-        if not labels or not values:
+        if isinstance(self.data, str) and (not labels or not values):
             raise ValueError(
                 "You need to specify labels and values as separate" "attributes."
             )
@@ -110,22 +109,22 @@ class BaseChart(RenderEngine):
             return str(size) + "rem"
         return size
 
-    def set_title(self, title, font=None):
+    def set_title(self, title, fontsize=None):
         self.opts["title"] = self._xstr(title)
-        if font:
-            self.opts["titleFontSize"] = font
+        if fontsize:
+            self.opts["titleFontSize"] = fontsize
         return self
 
-    def set_xlabel(self, xlabel, font=None):
+    def set_xlabel(self, xlabel, fontsize=None):
         self.opts["xLabel"] = self._xstr(xlabel)
-        if font:
-            self.opts["labelFontSize"] = font
+        if fontsize:
+            self.opts["labelFontSize"] = fontsize
         return self
 
-    def set_ylabel(self, ylabel, font=None):
+    def set_ylabel(self, ylabel, fontsize=None):
         self.opts["yLabel"] = self._xstr(ylabel)
-        if font:
-            self.opts["labelFontSize"] = font
+        if fontsize:
+            self.opts["labelFontSize"] = fontsize
         return self
 
     def set_figsize(self, figsize):
@@ -134,6 +133,13 @@ class BaseChart(RenderEngine):
         self.opts["width"] = figsize[0]
         self.opts["height"] = figsize[1]
 
+        return self
+
+    def set_legend(self, legend=True, legend_position="right"):
+        if legend:
+            self.opts["legendPosition"] = legend_position
+        else:
+            self.opts["legend"] = legend
         return self
 
     def _set_kwargs(self, mapping=None, **kwargs):
