@@ -12,7 +12,7 @@ setup(
     keywords=__keywords__,
     packages=find_namespace_packages(include=["py-roughviz.*"]),
     install_requires=["jinja2", "ipython"],
-    download_url="https://github.com/charlesdong1991/py-roughviz/archive/v0.1.0.tar.gz",
+    download_url="https://github.com/charlesdong1991/py-roughviz/archive/v0.1.1.tar.gz",
     tests_require=["pytest"],
     classifiers=[
         "Development Status :: 3 - Alpha",
