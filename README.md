@@ -2,6 +2,7 @@
 
 This is the Python implementation of the JaveScript Library RoughViz which you could
 use to visualize sketchy/hand-drawn styled charts.
+You could check out original JS libarary here: [RoughViz](https://github.com/jwilber/roughViz)
 
 ## Implemented Charts
 - Bar
