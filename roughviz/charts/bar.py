@@ -28,6 +28,7 @@ class Bar(BaseChart):
         axis_fontsize=1.5,
         label_fontsize=2,
         axis_roughness=0.5,
+        axis_stroke_width=0.5,
         color="skyblue",
         highlight="green",
         inner_stroke_width=0,
@@ -46,6 +47,7 @@ class Bar(BaseChart):
 
         self.opts["color"] = color
         self.opts["axisRoughness"] = axis_roughness
+        self.opts["axisStrokeWidth"] = axis_stroke_width
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width
         self.opts["padding"] = padding

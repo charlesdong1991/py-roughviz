@@ -28,6 +28,7 @@ class Barh(BaseChart):
         axis_fontsize=1.5,
         label_fontsize=2,
         axis_roughness=0.5,
+        axis_stroke_width=0.5,
         highlight="coral",
         inner_stroke_width=0,
         padding=0.1,
@@ -44,6 +45,7 @@ class Barh(BaseChart):
         self.opts["labelFontSize"] = label_fontsize
 
         self.opts["axisRoughness"] = axis_roughness
+        self.opts["axisStrokeWidth"] = axis_stroke_width
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width
         self.opts["padding"] = padding

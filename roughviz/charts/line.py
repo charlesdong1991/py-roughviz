@@ -47,6 +47,7 @@ class Line(BaseChart):
         axis_fontsize=1,
         label_fontsize=2,
         axis_roughness=0.5,
+        axis_stroke_width=0.5,
         colors=None,
         margin=None,
         font="Gaegu",
@@ -81,6 +82,7 @@ class Line(BaseChart):
         self.opts["labelFontSize"] = label_fontsize
         self.opts["font"] = font
         self.opts["axisRoughness"] = axis_roughness
+        self.opts["axisStrokeWidth"] = axis_stroke_width
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width
         self.opts["simplification"] = simplification

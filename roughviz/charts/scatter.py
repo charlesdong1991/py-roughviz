@@ -44,6 +44,7 @@ class Scatter(BaseChart):
         axis_fontsize=1.5,
         label_fontsize=2,
         axis_roughness=0.5,
+        axis_stroke_width=0.5,
         colors=None,
         color_zero=False,
         margin=None,
@@ -70,6 +71,7 @@ class Scatter(BaseChart):
         self.opts["font"] = font
         self.opts["radius"] = radius
         self.opts["axisRoughness"] = axis_roughness
+        self.opts["axisStrokeWidth"] = axis_stroke_width
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width
         self.opts["simplification"] = simplification
