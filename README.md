@@ -40,6 +40,25 @@ define the options later. And in order to make it easier to use, there are sever
 - Example 1
 
 ```python
+from roughviz.charts.line import Line
+
+line = Line(data="examples/example_datasets/vis1.csv", y1="a", y2="b", y3="c")
+line.set_legend(legend_position="left")
+line.set_title("Line Plot", fontsize=2)
+line.set_options(colors=["tan", "orange", "coral"])
+
+line.show()
+```
+
+
+![Example 1]
+(https://github.com/charlesdong1991/py-roughviz/blob/master/examples/example_plots/example1.png)
+
+
+
+- Example 2
+
+```python
 from roughviz.charts.bar import Bar
 
 data = {
@@ -53,16 +72,5 @@ bar.set_ylabel("Number", fontsize=2)
 
 bar.show()
 ```
-
-- Example 2
-
-```python
-from roughviz.charts.line import Line
-
-line = Line(data="examples/example_datasets/vis1.csv", y1="a", y2="b", y3="c")
-line.set_legend(legend_position="left")
-line.set_title("Line Plot", fontsize=2)
-line.set_options(colors=["tan", "orange", "coral"])
-
-line.show()
-```
+![Example 2]
+(https://github.com/charlesdong1991/py-roughviz/blob/master/examples/example_plots/example2.png)
