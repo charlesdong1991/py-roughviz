@@ -1,5 +1,17 @@
 from roughviz.charts.base import BaseChart
 
+DEFAULT_COLORS = [
+    "coral",
+    "skyblue",
+    "#66c2a5",
+    "tan",
+    "#8da0cb",
+    "#e78ac3",
+    "#a6d854",
+    "#ffd92f",
+    "tan",
+    "orange",
+]
 DEFAULT_MARGIN = {"top": 50, "right": 20, "bottom": 70, "left": 100}
 
 
@@ -11,20 +23,27 @@ class Pie(BaseChart):
         "highlight": "highlight",
         "inner_stroke_width": "innerStrokeWidth",
         "margin": "margin",
+        "colors": "colors",
         "simplification": "simplification",
     }
 
     def __init__(
         self,
         data,
+        values=None,
+        labels=None,
         font=0,
         highlight="green",
         inner_stroke_width=0,
         margin=None,
+        colors=None,
         simplification=0.2,
         **kwargs
     ):
-        super().__init__(data)
+        super().__init__(data, values, labels)
+
+        if colors is None:
+            self.opts["colors"] = DEFAULT_COLORS
 
         if margin is None:
             self.opts["margin"] = DEFAULT_MARGIN
