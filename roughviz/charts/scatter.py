@@ -13,6 +13,7 @@ DEFAULT_COLORS = [
     "orange",
 ]
 DEFAULT_MARGIN = {"top": 50, "right": 20, "bottom": 70, "left": 100}
+DATA_TYPE = (".csv", ".tsv")
 SCATTER_DATA_KEYS = {"x", "y"}
 
 
@@ -29,6 +30,7 @@ class Scatter(BaseChart):
         "padding": "padding",
         "highlight": "highlight",
         "stroke": "stroke",
+        "radius": "radius",
         "simplification": "simplification",
     }
 
@@ -57,7 +59,7 @@ class Scatter(BaseChart):
         self._assign_input_values(x, y)
 
         if colors is None:
-            colors = DEFAULT_COLORS
+            self.opts["colors"] = DEFAULT_COLORS
 
         if margin is None:
             self.opts["margin"] = DEFAULT_MARGIN
@@ -73,20 +75,23 @@ class Scatter(BaseChart):
         self.opts["axisRoughness"] = axis_roughness
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width
-        self.opts["colors"] = colors
         self.opts["simplification"] = simplification
         self.opts["stroke"] = stroke
-
         self._set_kwargs(**kwargs)
 
     @staticmethod
-    def _check_data_keys(data):
-        if isinstance(data, dict) and set(data.keys()) != SCATTER_DATA_KEYS:
+    def _check_input_data(data):
+        if not isinstance(data, (str, dict)):
+            raise TypeError("Only valid type of data is str and dictionary.")
+        elif isinstance(data, str) and not data.endswith(DATA_TYPE):
+            raise ValueError("Wrong type of data")
+        elif isinstance(data, dict) and set(data.keys()) != SCATTER_DATA_KEYS:
             raise ValueError("Has to be x and y")
 
     def _assign_input_values(self, x, y):
-        if not x or not y:
+        if isinstance(self.data, str) and (not x or not y):
             raise ValueError("You need to specify x and y as separate" "attributes.")
+
         self.opts["x"] = x
         self.opts["y"] = y
 
