@@ -1,3 +1,4 @@
+import os
 import json
 import uuid
 from numbers import Number
@@ -85,6 +86,8 @@ class BaseChart(RenderEngine):
             raise TypeError("Only valid type of data is str and dictionary.")
         elif isinstance(data, str) and not data.endswith(DATA_TYPE):
             raise ValueError("Wrong type of data")
+        elif isinstance(data, str) and not os.path.exists(data):
+            raise FileNotFoundError("The data file is not found.")
         elif isinstance(data, dict) and set(data.keys()) != DATA_KEYS:
             raise ValueError(
                 "If input data is dictionary, you must provide both values and labels as keys"
@@ -95,7 +98,7 @@ class BaseChart(RenderEngine):
         """
         if isinstance(self.data, str) and (not labels or not values):
             raise ValueError(
-                "You need to specify labels and values as separate" "attributes."
+                "You need to specify labels and values as separate attributes."
             )
         self.opts["labels"] = labels
         self.opts["values"] = values
