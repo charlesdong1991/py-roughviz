@@ -1,5 +1,17 @@
 # py-roughviz
 
+<p align="left">
+    <a href="https://badge.fury.io/py/py-roughviz">
+        <img src="https://badge.fury.io/py/py-roughviz.svg" alt="Package Version">
+    </a>
+     <a href="https://github.com/charlesdong1991/py-roughviz/pulls">
+        <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions welcome">
+    </a>
+    <a href="https://opensource.org/licenses/MIT">
+        <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="License">
+    </a>
+</p>
+
 This is the Python wrapper of the JaveScript Library RoughViz which you could
 use to visualize sketchy/hand-drawn styled charts.
 You could check out original JS libarary here: [RoughViz](https://github.com/jwilber/roughViz)
