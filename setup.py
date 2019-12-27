@@ -5,14 +5,14 @@ __keywords__ = ["py-roughviz", "visualization", "sketchy charts", "hand-drawn ch
 setup(
     name="py-roughviz",
     description="The Python implementation of JavaScript Library RoughViz to create sketchy charts.",
-    version="0.1.2",
+    version="0.2.0",
     author="Kaiqi Dong",
     author_email="kaiqidong1991@gmail.com",
     licnese="MIT License",
     keywords=__keywords__,
     packages=find_packages(exclude=["test*"]),
     install_requires=["jinja2", "ipython"],
-    download_url="https://github.com/charlesdong1991/py-roughviz/archive/v0.1.2.tar.gz",
+    download_url="https://github.com/charlesdong1991/py-roughviz/archive/v0.2.0.tar.gz",
     tests_require=["pytest"],
     classifiers=[
         "Development Status :: 3 - Alpha",
