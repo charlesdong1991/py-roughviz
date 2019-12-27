@@ -1,0 +1,13 @@
+language: python
+notifications:
+  email:
+    recipients:
+      - kaiqidong1991@gmail.com
+    on_success: change
+    on_failure: always
+python:
+  - "3.7-dev"
+  - "3.6"
+script:
+  - python setup.py install
+  - python -m pytest tests/
