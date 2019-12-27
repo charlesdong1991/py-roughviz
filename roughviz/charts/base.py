@@ -1,7 +1,7 @@
 import json
 import uuid
 from numbers import Number
-from typing import Optional
+from typing import Optional, Union
 
 from roughviz.render.engine import RenderEngine
 
@@ -34,16 +34,16 @@ class BaseChart(RenderEngine):
         values: Optional[str] = None,
         labels: Optional[str] = None,
         title: Optional[str] = None,
-        title_fontsize: Optional[int, float] = 0.95,
+        title_fontsize: Optional[Union[int, float]] = 0.95,
         width: Optional[int] = 800,
         height: Optional[int] = 600,
         interactive: bool = True,
         bowing: Optional[float] = 0.2,
         fill_style: Optional[str] = "cross-hatch",
-        fill_weight: Optional[int, float] = 0,
-        stroke_width: Optional[int, float] = 1,
-        roughness: Optional[int, float] = 1,
-        tooltip_fontsize: Optional[int, float] = 0.95,
+        fill_weight: Optional[Union[int, float]] = 0,
+        stroke_width: Optional[Union[int, float]] = 1,
+        roughness: Optional[Union[int, float]] = 1,
+        tooltip_fontsize: Optional[Union[int, float]] = 0.95,
         **kwargs,
     ):
         super().__init__()
@@ -120,7 +120,7 @@ class BaseChart(RenderEngine):
             return str(size) + "rem"
         return size
 
-    def set_title(self, title: str, fontsize: Optional[int, float] = None):
+    def set_title(self, title: str, fontsize: Optional[Union[int, float]] = None):
         """Set the title for plots.
 
         Args:
@@ -132,7 +132,7 @@ class BaseChart(RenderEngine):
             self.opts["titleFontSize"] = fontsize
         return self
 
-    def set_xlabel(self, xlabel: str, fontsize: Optional[int, float] = None):
+    def set_xlabel(self, xlabel: str, fontsize: Optional[Union[int, float]] = None):
         """Set the xlabel for plots.
 
         Args:
@@ -144,7 +144,7 @@ class BaseChart(RenderEngine):
             self.opts["labelFontSize"] = fontsize
         return self
 
-    def set_ylabel(self, ylabel: str, fontsize: Optional[int, float] = None):
+    def set_ylabel(self, ylabel: str, fontsize: Optional[Union[int, float]] = None):
         """Set the ylabel for plots.
 
         Args:
