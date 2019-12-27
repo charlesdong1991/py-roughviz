@@ -51,8 +51,7 @@ line.show()
 ```
 
 
-![Example 1]
-(https://github.com/charlesdong1991/py-roughviz/blob/master/examples/example_plots/example1.png)
+![Example 1](https://github.com/charlesdong1991/py-roughviz/blob/master/examples/example_plots/example1.png)
 
 
 
@@ -72,5 +71,5 @@ bar.set_ylabel("Number", fontsize=2)
 
 bar.show()
 ```
-![Example 2]
-(https://github.com/charlesdong1991/py-roughviz/blob/master/examples/example_plots/example2.png)
+
+![Example 2](https://github.com/charlesdong1991/py-roughviz/blob/master/examples/example_plots/example2.png)
