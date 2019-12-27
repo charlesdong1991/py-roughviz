@@ -1,10 +1,16 @@
+from os import path
 from setuptools import setup, find_packages
+
+here = path.abspath(path.dirname(__file__))
+with open(path.join(here, "README.md"), encoding="utf-8") as f:
+    long_description = f.read()
 
 __keywords__ = ["py-roughviz", "visualization", "sketchy charts", "hand-drawn charts"]
 
 setup(
     name="py-roughviz",
     description="The Python implementation of JavaScript Library RoughViz to create sketchy charts.",
+    long_description=long_description,
     version="0.2.0",
     author="Kaiqi Dong",
     author_email="kaiqidong1991@gmail.com",
