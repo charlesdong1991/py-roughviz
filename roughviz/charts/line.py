@@ -1,3 +1,5 @@
+import os
+
 from roughviz.charts.base import BaseChart
 
 DEFAULT_COLORS = [
@@ -107,6 +109,8 @@ class Line(BaseChart):
             raise ValueError(
                 "Wrong format of data, has be to either csv or tsv format."
             )
+        elif isinstance(data, str) and not os.path.exists(data):
+            raise FileNotFoundError("The data file is not found.")
 
     def _assign_input_values(self, values, labels, **ys_dict):
         for y, value in ys_dict.items():

@@ -21,12 +21,12 @@ def test_wrong_data_path():
 def test_change_options():
     fpath = "tests/test_data/vis2.csv"
 
-    bar = Barh(data=fpath, values="b", labels="a")
+    barh = Barh(data=fpath, values="b", labels="a")
 
-    assert bar.opts["axisFontSize"] == 1.5
-    bar.set_options(axis_fontsize=2)
-    assert bar.opts["axisFontSize"] == 2
+    assert barh.opts["axisFontSize"] == 1.5
+    barh.set_options(axis_fontsize=2)
+    assert barh.opts["axisFontSize"] == 2
 
-    assert bar.opts["highlight"] == "coral"
-    bar.set_options(highlight="skyblue")
-    assert bar.opts["highlight"] == "skyblue"
+    assert barh.opts["highlight"] == "coral"
+    barh.set_options(highlight="skyblue")
+    assert barh.opts["highlight"] == "skyblue"
