@@ -17,12 +17,16 @@ use to visualize sketchy/hand-drawn styled charts.
 You could check out original JS libarary here: [RoughViz](https://github.com/jwilber/roughViz)
 
 ## Implemented Charts
+
+Currently, there are seven types of charts available on JS RoughViz project, and I implemented all of them:
+
 - Bar
 - Barh
 - Pie
 - Line
 - Scatter
 - Donut
+- StackedBar
 
 ## Before Use it
 
@@ -53,6 +57,13 @@ define the options later. And in order to make it easier to use, there are sever
 2. For common options shared across different charts, you could define it in a more intuitive way, e.g.
 `set_title(title="The plot", fontsize=2)`, or `set_xlabel("X Label", fontsize=3)`
 
+Currently available options are:
+- set_options: this can be used to set all available options for charts
+- set_title: this can be used to set title and title fontsize
+- set_xlabel: this can be used to set xlabel and its fontsize
+- set_ylabel: this can be used to set ylabel and its fontsize
+- set_figsize: this can be used to set the figsize for plots
+- set_legend: this can be used to determine if legend is presented, and if so, which position to put legend
 
 
 ## Examples
