@@ -4,6 +4,9 @@
     <a href="https://badge.fury.io/py/py-roughviz">
         <img src="https://badge.fury.io/py/py-roughviz.svg" alt="Package Version">
     </a>
+        <a href="https://badge.fury.io/py/py-roughviz">
+        <img src="https://travis-ci.org/charlesdong1991/py-roughviz.svg?branch=master" alt="build">
+    </a>
      <a href="https://github.com/charlesdong1991/py-roughviz/pulls">
         <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions welcome">
     </a>
