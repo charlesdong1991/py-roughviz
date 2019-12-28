@@ -12,7 +12,7 @@ setup(
     description="The Python implementation of JavaScript Library RoughViz to create sketchy charts.",
     long_description_content_type='text/markdown',
     long_description=long_description,
-    version="0.3.0",
+    version="0.3.1",
     author="Kaiqi Dong",
     url="https://github.com/charlesdong1991/py-roughviz",
     author_email="kaiqidong1991@gmail.com",
@@ -20,7 +20,7 @@ setup(
     keywords=__keywords__,
     packages=find_packages(exclude=["test*"]),
     install_requires=["jinja2", "ipython"],
-    download_url="https://github.com/charlesdong1991/py-roughviz/archive/v0.3.0.tar.gz",
+    download_url="https://github.com/charlesdong1991/py-roughviz/archive/v0.3.1.tar.gz",
     tests_require=["pytest"],
     classifiers=[
         "Development Status :: 3 - Alpha",
