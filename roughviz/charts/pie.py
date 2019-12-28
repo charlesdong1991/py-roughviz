@@ -25,6 +25,7 @@ class Pie(BaseChart):
         "inner_stroke_width": "innerStrokeWidth",
         "colors": "colors",
         "simplification": "simplification",
+        "padding": "padding",
     }
 
     def __init__(
@@ -37,6 +38,7 @@ class Pie(BaseChart):
         inner_stroke_width=0,
         colors=None,
         simplification=0.2,
+        padding=0.1,
         legend=True,
         legend_position="right",
         **kwargs
@@ -49,6 +51,7 @@ class Pie(BaseChart):
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width
         self.opts["simplification"] = simplification
+        self.opts["padding"] = padding
         self.opts["legend"] = legend
         self.opts["legendPosition"] = legend_position
 
