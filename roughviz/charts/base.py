@@ -46,7 +46,7 @@ class BaseChart(RenderEngine):
         fill_weight: Optional[Union[int, float]] = 0,
         stroke_width: Optional[Union[int, float]] = 1,
         roughness: Optional[Union[int, float]] = 1,
-        margin=None,
+        margin: Optional[dict] = None,
         tooltip_fontsize: Optional[Union[int, float]] = 0.95,
         **kwargs,
     ):
