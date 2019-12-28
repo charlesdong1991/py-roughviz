@@ -12,7 +12,6 @@ DEFAULT_COLORS = [
     "tan",
     "orange",
 ]
-DEFAULT_MARGIN = {"top": 50, "right": 20, "bottom": 70, "left": 100}
 
 
 class StackedBar(BaseChart):
@@ -30,7 +29,6 @@ class StackedBar(BaseChart):
         "inner_stroke_width": "innerStrokeWidth",
         "padding": "padding",
         "stroke": "stroke",
-        "margin": "margin",
         "simplification": "simplification",
     }
 
@@ -49,14 +47,12 @@ class StackedBar(BaseChart):
         axis_stroke_width=0.5,
         padding=0.1,
         stroke="black",
-        margin=None,
         simplification=0.2,
         **kwargs
     ):
         super().__init__(data, labels)
 
         self.opts["colors"] = colors or DEFAULT_COLORS
-        self.opts["margin"] = margin or DEFAULT_MARGIN
 
         self.opts["xLabel"] = self._xstr(xlabel)
         self.opts["yLabel"] = self._xstr(ylabel)

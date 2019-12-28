@@ -49,7 +49,7 @@ class Scatter(BaseChart):
         colors=None,
         color_zero=False,
         font="Gaegu",
-        highlight="green",
+        highlight="coral",
         inner_stroke_width=0,
         stroke="black",
         simplification=0.2,
