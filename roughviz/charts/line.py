@@ -14,7 +14,6 @@ DEFAULT_COLORS = [
     "tan",
     "orange",
 ]
-DEFAULT_MARGIN = {"top": 50, "right": 20, "bottom": 70, "left": 100}
 DATA_TYPE = (".csv", ".tsv")
 
 
@@ -32,10 +31,9 @@ class Line(BaseChart):
         "highlight": "highlight",
         "colors": "colors",
         "stroke": "stroke",
-        "margin": "margin",
         "simplification": "simplification",
         "legend": "legend",
-        "lenged_position": "legendPosition",
+        "legend_position": "legendPosition",
         "circle": "circle",
         "circle_radius": "circleRadius",
         "circle_roughness": "circleRoughness",
@@ -51,7 +49,6 @@ class Line(BaseChart):
         axis_roughness=0.5,
         axis_stroke_width=0.5,
         colors=None,
-        margin=None,
         font="Gaegu",
         highlight="green",
         inner_stroke_width=0,
@@ -67,7 +64,6 @@ class Line(BaseChart):
         super().__init__(data)
 
         self.opts["colors"] = colors or DEFAULT_COLORS
-        self.opts["margin"] = margin or DEFAULT_MARGIN
 
         # Line plot is slightly different than other plots, therefore, preprocessing
         # is needed beforehand

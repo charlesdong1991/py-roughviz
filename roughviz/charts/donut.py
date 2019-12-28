@@ -8,7 +8,6 @@ class Donut(BaseChart):
         "font": "font",
         "highlight": "highlight",
         "inner_stroke_width": "innerStrokeWidth",
-        "margin": "margin",
         "simplification": "simplification",
     }
 

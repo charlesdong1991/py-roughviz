@@ -12,7 +12,6 @@ DEFAULT_COLORS = [
     "tan",
     "orange",
 ]
-DEFAULT_MARGIN = {"top": 50, "right": 20, "bottom": 70, "left": 100}
 DATA_TYPE = (".csv", ".tsv")
 SCATTER_DATA_KEYS = {"x", "y"}
 
@@ -31,6 +30,8 @@ class Scatter(BaseChart):
         "highlight": "highlight",
         "stroke": "stroke",
         "radius": "radius",
+        "colors": "colors",
+        "color_zero": "colorZero",
         "simplification": "simplification",
     }
 
@@ -47,7 +48,6 @@ class Scatter(BaseChart):
         axis_stroke_width=0.5,
         colors=None,
         color_zero=False,
-        margin=None,
         font="Gaegu",
         highlight="green",
         inner_stroke_width=0,
@@ -60,7 +60,6 @@ class Scatter(BaseChart):
         self._assign_input_values(x, y)
 
         self.opts["colors"] = colors or DEFAULT_COLORS
-        self.opts["margin"] = margin or DEFAULT_MARGIN
 
         self.opts["xLabel"] = self._xstr(xlabel)
         self.opts["yLabel"] = self._xstr(ylabel)

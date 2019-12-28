@@ -9,6 +9,7 @@ from roughviz.render.engine import RenderEngine
 
 DATA_TYPE = (".csv", ".tsv")
 DATA_KEYS = {"labels", "values"}
+DEFAULT_MARGIN = {"top": 50, "right": 20, "bottom": 70, "left": 100}
 
 
 class BaseChart(RenderEngine):
@@ -22,11 +23,12 @@ class BaseChart(RenderEngine):
         "fill_style": "fillStyle",
         "fill_weight": "fillWeight",
         "stroke_width": "strokeWidth",
-        "roughtness": "roughness",
+        "roughness": "roughness",
         "tooltip_fontsize": "tooltipFontSize",
         "title_fontsize": "titleFontSize",
         "width": "width",
         "height": "height",
+        "margin": "margin",
     }
 
     def __init__(
@@ -44,6 +46,7 @@ class BaseChart(RenderEngine):
         fill_weight: Optional[Union[int, float]] = 0,
         stroke_width: Optional[Union[int, float]] = 1,
         roughness: Optional[Union[int, float]] = 1,
+        margin=None,
         tooltip_fontsize: Optional[Union[int, float]] = 0.95,
         **kwargs,
     ):
@@ -57,6 +60,8 @@ class BaseChart(RenderEngine):
         self.opts["data"] = data
 
         self.opts["title"] = self._xstr(title)
+        self.opts["margin"] = margin or DEFAULT_MARGIN
+
         self.opts["width"] = width
         self.opts["height"] = height
         self.opts["interactive"] = interactive

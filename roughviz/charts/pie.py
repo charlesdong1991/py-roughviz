@@ -12,17 +12,17 @@ DEFAULT_COLORS = [
     "tan",
     "orange",
 ]
-DEFAULT_MARGIN = {"top": 50, "right": 20, "bottom": 70, "left": 100}
 
 
 class Pie(BaseChart):
     CHART_TYPE = "Pie"
 
     PIE_KWARGS = {
+        "legend": "legend",
+        "legend_position": "legendPosition",
         "font": "font",
         "highlight": "highlight",
         "inner_stroke_width": "innerStrokeWidth",
-        "margin": "margin",
         "colors": "colors",
         "simplification": "simplification",
     }
@@ -33,23 +33,24 @@ class Pie(BaseChart):
         values=None,
         labels=None,
         font=0,
-        highlight="green",
+        highlight="coral",
         inner_stroke_width=0,
-        margin=None,
         colors=None,
         simplification=0.2,
+        legend=True,
+        legend_position="right",
         **kwargs
     ):
         super().__init__(data, values, labels)
 
         self.opts["colors"] = colors or DEFAULT_COLORS
-        self.opts["margin"] = margin or DEFAULT_MARGIN
 
         self.opts["font"] = font
-
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width
         self.opts["simplification"] = simplification
+        self.opts["legend"] = legend
+        self.opts["legendPosition"] = legend_position
 
         self._set_kwargs(**kwargs)
 
