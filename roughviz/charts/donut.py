@@ -9,6 +9,9 @@ class Donut(BaseChart):
         "highlight": "highlight",
         "inner_stroke_width": "innerStrokeWidth",
         "simplification": "simplification",
+        "padding": "padding",
+        "legend": "legend",
+        "legend_position": "legendPosition",
     }
 
     def __init__(
@@ -20,6 +23,9 @@ class Donut(BaseChart):
         highlight="green",
         inner_stroke_width=0,
         simplification=0.2,
+        padding=0.1,
+        legend=True,
+        legend_position="right",
         **kwargs
     ):
         super().__init__(data, values, labels)
@@ -28,6 +34,9 @@ class Donut(BaseChart):
         self.opts["highlight"] = highlight
         self.opts["innerStrokeWidth"] = inner_stroke_width
         self.opts["simplification"] = simplification
+        self.opts["padding"] = padding
+        self.opts["legend"] = legend
+        self.opts["legendPosition"] = legend_position
 
         self._set_kwargs(**kwargs)
 
