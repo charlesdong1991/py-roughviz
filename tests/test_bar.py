@@ -1,4 +1,5 @@
 import pytest
+import pandas as pd
 
 from roughviz.charts.bar import Bar
 
@@ -30,3 +31,16 @@ def test_change_options():
     assert bar.opts["highlight"] == "green"
     bar.set_options(highlight="coral")
     assert bar.opts["highlight"] == "coral"
+
+
+def test_dataframe_input():
+    df = pd.DataFrame({"a": ["a", "b"], "b": [1, 2], "c": [3, 4]})
+
+    with pytest.raises(ValueError):
+        bar = Bar(data=df, values="a", labels="d")
+
+    bar = Bar(data=df, labels="a", values="b")
+
+    assert bar.opts["width"] == 800
+    bar.set_figsize(figsize=(600, 600))
+    assert bar.opts["width"] == 600

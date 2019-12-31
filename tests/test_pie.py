@@ -1,4 +1,5 @@
 import pytest
+import pandas as pd
 
 from roughviz.charts.pie import Pie
 
@@ -33,3 +34,16 @@ def test_change_options_dict_data():
     assert pie.opts["highlight"] == "coral"
     pie.set_options(highlight="skyblue")
     assert pie.opts["highlight"] == "skyblue"
+
+
+def test_dataframe_input():
+    df = pd.DataFrame({"a": ["a", "b"], "b": [1, 2], "c": [3, 4]})
+
+    with pytest.raises(ValueError):
+        pie = Pie(data=df, values="a", labels="d")
+
+    pie = Pie(data=df, labels="a", values="b")
+
+    assert pie.opts["legendPosition"] == "right"
+    pie.set_options(legend_position="left")
+    assert pie.opts["legendPosition"] == "left"

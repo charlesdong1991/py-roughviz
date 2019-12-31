@@ -1,4 +1,5 @@
 import pytest
+import pandas as pd
 
 from roughviz.charts.line import Line
 
@@ -27,3 +28,10 @@ def test_set_ylabel():
     line.set_ylabel("y label", fontsize=1.5)
     assert line.opts["yLabel"] == "y label"
     assert line.opts["labelFontSize"] == 1.5
+
+
+def test_raise_error_with_dataframe():
+    df = pd.DataFrame({"a": [1, 2], "b": ["a", "b"]})
+
+    with pytest.raises(TypeError):
+        Line(data=df, y1="a")

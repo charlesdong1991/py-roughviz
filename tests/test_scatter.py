@@ -1,4 +1,5 @@
 import pytest
+import pandas as pd
 
 from roughviz.charts.scatter import Scatter
 
@@ -21,3 +22,16 @@ def test_set_xlabel():
     sc.set_xlabel("x label", fontsize=1.5)
     assert sc.opts["xLabel"] == "x label"
     assert sc.opts["labelFontSize"] == 1.5
+
+
+def test_dataframe_input():
+    df = pd.DataFrame({"a": ["a", "b"], "b": [1, 2], "c": [3, 4]})
+
+    with pytest.raises(ValueError):
+        sc = Scatter(data=df, x="a", y="d")
+
+    sc = Scatter(data=df, x="b", y="c")
+
+    assert sc.opts["axisStrokeWidth"] == 0.5
+    sc.set_options(axis_stroke_width=1)
+    assert sc.opts["axisStrokeWidth"] == 1

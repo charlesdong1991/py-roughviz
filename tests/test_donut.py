@@ -1,4 +1,5 @@
 import pytest
+import pandas as pd
 
 from roughviz.charts.donut import Donut
 
@@ -33,3 +34,16 @@ def test_change_options_dict_data():
     assert donut.opts["legendPosition"] == "right"
     donut.set_options(legend_position="left")
     assert donut.opts["legendPosition"] == "left"
+
+
+def test_dataframe_input():
+    df = pd.DataFrame({"a": ["a", "b"], "b": [1, 2], "c": [3, 4]})
+
+    with pytest.raises(ValueError):
+        donut = Donut(data=df, values="a", labels="d")
+
+    donut = Donut(data=df, labels="a", values="b")
+
+    assert donut.opts["font"] == 0
+    donut.set_options(font=1)
+    assert donut.opts["font"] == 1

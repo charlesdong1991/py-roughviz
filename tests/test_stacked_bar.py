@@ -1,4 +1,5 @@
 import pytest
+import pandas as pd
 
 from roughviz.charts.stacked_bar import StackedBar
 
@@ -43,3 +44,10 @@ def test_change_options_dict_data():
     assert sb.opts["title"] == ""
     sb.set_options(title="StackBar")
     assert sb.opts["title"] == "StackBar"
+
+
+def test_raise_error_with_dataframe():
+    df = pd.DataFrame({"a": [1, 2], "b": ["a", "b"]})
+
+    with pytest.raises(TypeError):
+        StackedBar(data=df, labels="a")

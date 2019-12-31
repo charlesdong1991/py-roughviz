@@ -1,4 +1,5 @@
 import pytest
+import pandas as pd
 
 from roughviz.charts.barh import Barh
 
@@ -30,3 +31,16 @@ def test_change_options():
     assert barh.opts["highlight"] == "coral"
     barh.set_options(highlight="skyblue")
     assert barh.opts["highlight"] == "skyblue"
+
+
+def test_dataframe_input():
+    df = pd.DataFrame({"a": ["a", "b"], "b": [1, 2], "c": [3, 4]})
+
+    with pytest.raises(ValueError):
+        barh = Barh(data=df, values="a", labels="d")
+
+    barh = Barh(data=df, labels="a", values="b")
+
+    assert barh.opts["height"] == 600
+    barh.set_figsize(figsize=(600, 800))
+    assert barh.opts["height"] == 800
