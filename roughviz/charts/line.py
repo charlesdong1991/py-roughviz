@@ -71,7 +71,6 @@ class Line(BaseChart):
         ys_dict = {y: kwargs.pop(y) for y in ys}
 
         self._assign_input_values(None, None, **ys_dict)
-        self.opts["data"] = data
 
         self.opts["xLabel"] = self._xstr(xlabel)
         self.opts["yLabel"] = self._xstr(ylabel)

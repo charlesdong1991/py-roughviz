@@ -4,6 +4,8 @@ import uuid
 from numbers import Number
 from typing import Optional, Union
 
+import pandas as pd
+
 from roughviz.render.engine import RenderEngine
 
 
@@ -16,6 +18,7 @@ class BaseChart(RenderEngine):
     """
     This is the base class where all charts are inherited from
     """
+
     BASE_KWARGS = {
         "title": "title",
         "interactive": "interactive",
@@ -56,6 +59,15 @@ class BaseChart(RenderEngine):
         self.data = data
         self._check_input_data(data)
 
+        # Allow pd.DataFrame as inputs
+        if isinstance(data, pd.DataFrame):
+            if not (labels in data and values in data):
+                raise ValueError("values and labels must be dataframe column names")
+            data = {
+                "values": data[values].values.tolist(),
+                "labels": data[labels].values.tolist(),
+            }
+
         self._assign_input_values(labels, values)
         self.opts["data"] = data
 
@@ -87,8 +99,10 @@ class BaseChart(RenderEngine):
     def _check_input_data(data):
         """Check the input data type and format.
         """
-        if not isinstance(data, (str, dict)):
-            raise TypeError("Only valid type of data is str and dictionary.")
+        if not isinstance(data, (str, dict, pd.DataFrame)):
+            raise TypeError(
+                "Only valid type of data is str and dictionary and pandas DataFrame."
+            )
         elif isinstance(data, str) and not data.endswith(DATA_TYPE):
             raise ValueError("Wrong type of data")
         elif isinstance(data, str) and not os.path.exists(data):
@@ -101,7 +115,7 @@ class BaseChart(RenderEngine):
     def _assign_input_values(self, labels, values):
         """Assign the values for input data.
         """
-        if isinstance(self.data, str) and (not labels or not values):
+        if isinstance(self.data, (str, pd.DataFrame)) and (not labels or not values):
             raise ValueError(
                 "You need to specify labels and values as separate attributes."
             )

@@ -1,3 +1,5 @@
+import pandas as pd
+
 from roughviz.charts.base import BaseChart
 
 DEFAULT_COLORS = [
@@ -57,6 +59,14 @@ class Scatter(BaseChart):
         **kwargs
     ):
         super().__init__(data, x, y)
+
+        # Allow pd.DataFrame as inputs
+        if isinstance(data, pd.DataFrame):
+            if not (x in data and y in data):
+                raise ValueError("x and y must be dataframe column names")
+            data = {"x": data[x].values.tolist(), "y": data[y].values.tolist()}
+            self.opts["data"] = data
+
         self._assign_input_values(x, y)
 
         self.opts["colors"] = colors or DEFAULT_COLORS
@@ -79,8 +89,8 @@ class Scatter(BaseChart):
 
     @staticmethod
     def _check_input_data(data):
-        if not isinstance(data, (str, dict)):
-            raise TypeError("Only valid type of data is str and dictionary.")
+        if not isinstance(data, (str, dict, pd.DataFrame)):
+            raise TypeError("Only valid type of data is str and dictionary and pandas DataFrame.")
         elif isinstance(data, str) and not data.endswith(DATA_TYPE):
             raise ValueError("Wrong type of data")
         elif isinstance(data, dict) and set(data.keys()) != SCATTER_DATA_KEYS:
