@@ -19,7 +19,7 @@ setup(
     licnese="MIT License",
     keywords=__keywords__,
     packages=find_packages(exclude=["test*"]),
-    install_requires=["jinja2", "ipython"],
+    install_requires=["jinja2", "ipython", "pandas"],
     download_url="https://github.com/charlesdong1991/py-roughviz/archive/v0.3.1.tar.gz",
     tests_require=["pytest"],
     classifiers=[
