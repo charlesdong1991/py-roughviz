@@ -69,12 +69,40 @@ Currently available options are:
 - `set_legend`: this can be used to determine if legend is presented, and if so, which position to put legend
 
 
+## Pandas DataFrame is accepted as input data
+
+One of major characters of this package is you could take pandas DataFrame as data type (this is not available
+in original JS tool), and this feature could make people use this in a more familiar way, similar to `seaborn`.
+
+Currently, plot types below are supported to take pandas DataFrame as input data:
+ - Barh
+ - Bar
+ - Scatter
+ - Pie
+ - Donut
+
+For example:
+
+```python
+import pandas as pd
+from roughviz.charts import Pie, Scatter
+
+df = pd.DataFrame({"a": ["a", "b"], "b": [1, 2], "c": [2, 3]})
+
+# pie plot
+pie = Pie(data=df, labels="a", values="b")
+
+# scatter plot
+scatter = Scatter(data=df, x="b", y="c")
+
+```
+ 
 ## Examples
 
 - Example 1
 
 ```python
-from roughviz.charts.line import Line
+from roughviz.charts import Line
 
 line = Line(data="examples/example_datasets/vis1.csv", y1="a", y2="b", y3="c")
 line.set_legend(legend_position="left")
@@ -92,7 +120,7 @@ line.show()
 - Example 2
 
 ```python
-from roughviz.charts.bar import Bar
+from roughviz.charts import Bar
 
 data = {
     "labels": ["North", "South", "East", "West"],
