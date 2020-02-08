@@ -12,7 +12,7 @@ setup(
     description="The Python implementation of JavaScript Library RoughViz to create sketchy charts.",
     long_description_content_type='text/markdown',
     long_description=long_description,
-    version="0.4.0",
+    version="0.4.1",
     author="Kaiqi Dong",
     url="https://github.com/charlesdong1991/py-roughviz",
     author_email="kaiqidong1991@gmail.com",
