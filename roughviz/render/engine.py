@@ -3,12 +3,12 @@ import os
 from jinja2 import Template
 from IPython.core.display import display, HTML
 
-ABS_PATH = os.path.abspath(os.path.dirname(__file__))
+from roughviz.constant import TEMPLATE_PATH
 
 
 class RenderEngine:
-    def __init__(self, tmpl_file: str = "templates/jupyter_notebook.html"):
-        tmpl_file = os.path.join(ABS_PATH, tmpl_file)
+    def __init__(self, tmpl_file: str = "jupyter_notebook.html"):
+        tmpl_file = os.path.join(TEMPLATE_PATH, tmpl_file)
         self.tmpl_file = tmpl_file
 
     def render_notebook(self):
